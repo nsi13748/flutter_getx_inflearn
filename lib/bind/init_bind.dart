@@ -12,7 +12,7 @@ class InitBind extends Bindings {
   @override
   void dependencies() {
     Get.put(MainController());      // MainView에서 선언했던 GetView<MainController>의 MainController 를 사용할 수 있게 된다.
-    Get.put(HomeController());
-    Get.lazyPut(() => null)
+    // Get.put(HomeController());
+    Get.lazyPut(() => HomeController());
   }
 }

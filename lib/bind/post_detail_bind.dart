@@ -9,4 +9,5 @@ class PostDetailBind implements Bindings {
     Get.lazyPut(() => PostController());
   }
 
+
 }

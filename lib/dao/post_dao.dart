@@ -34,7 +34,6 @@ class PostDao extends GetConnect {
     // http 관련된 기본 설정
     httpClient.baseUrl = ApiInfo.basePostUrl;
     httpClient.defaultContentType = 'application/x-www-form-urlencoded';        // ???
-
     httpClient.addRequestModifier((Request request) {                           // 헤더 설정
       request.headers['Accept'] = 'application/json';
       return request;
@@ -51,12 +50,15 @@ class PostDao extends GetConnect {
 
     try {
       final Response res = await get('/posts');
+      print(res.runtimeType); // Response<dynamic>
+      print(res);             // Instance of 'Response<dynamic>
+      print(res.body);        // List<dynamic> -> [json1, json2, ...]
 
       if(res.statusCode == HttpStatus.ok) {                                     // HttpSatus.ok = 200
-        // res.body 가 json 형태로 받은 데이터를 PostModel의 리스트로 반환한다.
-        // factory 메서드인 PostModel.fromJson은 Map형태의 PostModel 객체를 생성한다.
+        // res.body는 List<json> 타입의 데이터 -> PostModel의 리스트로 반환한다.
+        // map 함수로 factory 메서드인 PostModel.fromJson(json)에 적용 후 PostModel 타입 데이터로 반환한다.
         postModelList = res.body.map<PostModel>((json) => PostModel.fromJson(json)).toList();
-        print(res.body.runtimeType);
+        print(res.body.runtimeType);  //  List<dynamic>
 
       } else {
         code = CodeInfo.errer;
@@ -71,5 +73,9 @@ class PostDao extends GetConnect {
 
     return responseMap;
   }
+
+
+  // Post 상세 내역을 가져오는 메서드 정의
+
 
 }

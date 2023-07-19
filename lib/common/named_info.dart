@@ -5,6 +5,7 @@ class NamedInfo {
   static Map<String, String> names = {
     'title' : '플러터 홈',
     'post.title' : '포스트',
+    'post.detail.title' : '포스트 상세 보기',
     'photo.title' : '사진첩',
     'navBar.home' : '홈',
     'navBar.post' : '포스트',

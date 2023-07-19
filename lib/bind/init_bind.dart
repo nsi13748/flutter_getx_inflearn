@@ -2,6 +2,8 @@
 import 'package:get/get.dart';
 import 'package:inflearn_getx/controller/home_controller.dart';
 import 'package:inflearn_getx/controller/main_controller.dart';
+import 'package:inflearn_getx/controller/post_controller.dart';
+import 'package:inflearn_getx/view/post/post_view.dart';
 
 
 // 의존성 주입
@@ -14,5 +16,6 @@ class InitBind extends Bindings {
     Get.put(MainController());      // MainView에서 선언했던 GetView<MainController>의 MainController 를 사용할 수 있게 된다.
     // Get.put(HomeController());
     Get.lazyPut(() => HomeController());
+    Get.lazyPut(() => PostController());
   }
 }

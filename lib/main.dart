@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
 
       initialRoute: RouteInfo.routeRoot,  // -> '/'은 static으로 선언되어 객체생성을 하지 않아도 사용가능.
-      initialBinding: InitBind(),         // initalRoute에 적용해줄 controller를 Bind로 주입한다.
+      initialBinding: InitBind(),         // Bind 주입하기: initalRoute에 적용해줄 controller들을 정의한 Bind로 주입한다.
       getPages: RouteInfo.pages,          // 페이지 목록
 
       defaultTransition: Transition.cupertino,  // 화면 전환 방식

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:inflearn_getx/bind/init_bind.dart';
+import 'package:inflearn_getx/common/color_schemes.g.dart';
+import 'package:inflearn_getx/route/route_info.dart';
 import 'package:inflearn_getx/view/main_view.dart';
 
 void main() {
-  runApp(GetMaterialApp(
-    home: MainView(),
-  ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,61 +18,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+      initialRoute: RouteInfo.routeRoot,  // -> '/'은 static으로 선언되어 객체생성을 하지 않아도 사용가능.
+      initialBinding: InitBind(),         // initalRoute에 적용해줄 controller를 Bind로 주입한다.
+      getPages: RouteInfo.pages,          // 페이지 목록
 
-  final String title;
+      defaultTransition: Transition.cupertino,  // 화면 전환 방식
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
+      // 테마 및 폰트 적용
+      themeMode: ThemeMode.light,                                              // 테마를 시스템에 맞게 적용
+      theme: ThemeData(colorScheme: lightColorScheme, useMaterial3: true, fontFamily: 'NanumGothic'),      // 라이트 모드
+      darkTheme: ThemeData(colorScheme: darkColorScheme, useMaterial3: true, fontFamily: 'NanumGothic'),   // 다크 모드
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+      // 폰트 적용
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+      );
   }
 }

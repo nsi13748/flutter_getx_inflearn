@@ -67,7 +67,7 @@ class HomeView extends  GetView<HomeController> {
                 )
               ],
         ),
-              LoadingWidget(isVisible: controller.isLoding.value,)       // 로딩 표시를 Stack으로 올림
+              Obx(() => LoadingWidget(isVisible: controller.isLoading.value,)),       // 로딩 표시를 Stack으로 올림
              ],
           ),),);
   }

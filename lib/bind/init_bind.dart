@@ -1,5 +1,6 @@
 // 앱이 시작되면 실행될 바인드라서 init_bind
 import 'package:get/get.dart';
+import 'package:inflearn_getx/controller/home_controller.dart';
 import 'package:inflearn_getx/controller/main_controller.dart';
 
 
@@ -11,5 +12,7 @@ class InitBind extends Bindings {
   @override
   void dependencies() {
     Get.put(MainController());      // MainView에서 선언했던 GetView<MainController>의 MainController 를 사용할 수 있게 된다.
+    Get.put(HomeController());
+    Get.lazyPut(() => null)
   }
 }

@@ -11,7 +11,7 @@ class PostModel {
     this.id = -1,
     this.title = '',
     this.body = '',
-})
+});
 
   factory PostModel.fromJson(Map<String, dynamic> json) {
     return PostModel(
